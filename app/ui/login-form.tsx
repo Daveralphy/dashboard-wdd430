@@ -18,7 +18,7 @@ export default function LoginForm() {
   );
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form action={formAction} method="POST" className="space-y-6">
       <div>
         <h1 className={`${lusitana.className} mb-6 text-3xl font-bold text-gray-900`}>
           Welcome Back
@@ -66,7 +66,7 @@ export default function LoginForm() {
           </div>
         </div>
       </div>
-      <Button className="mt-6 w-full" aria-disabled={isPending}>
+      <Button type="submit" className="mt-6 w-full" aria-disabled={isPending}>
         Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
       </Button>
       <div className="flex h-8 items-end space-x-1">
