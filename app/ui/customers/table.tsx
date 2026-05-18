@@ -1,22 +1,18 @@
+'use client';
+
 import Image from 'next/image';
-import { lusitana } from '@/app/ui/fonts';
-import Search from '@/app/ui/search';
 import {
   CustomersTableType,
   FormattedCustomersTable,
 } from '@/app/lib/definitions';
 
-export default async function CustomersTable({
+export default function CustomersTable({
   customers,
 }: {
   customers: FormattedCustomersTable[];
 }) {
   return (
     <div className="w-full">
-      <h1 className={`${lusitana.className} mb-8 text-xl md:text-2xl`}>
-        Customers
-      </h1>
-      <Search placeholder="Search customers..." />
       <div className="mt-6 flow-root">
         <div className="overflow-x-auto">
           <div className="inline-block min-w-full align-middle">
@@ -80,6 +76,9 @@ export default async function CustomersTable({
                     <th scope="col" className="px-4 py-5 font-medium">
                       Total Paid
                     </th>
+                    <th scope="col" className="relative px-6 py-5 font-medium">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
 
@@ -109,6 +108,26 @@ export default async function CustomersTable({
                       </td>
                       <td className="whitespace-nowrap bg-white px-4 py-5 text-sm group-first-of-type:rounded-md group-last-of-type:rounded-md">
                         {customer.total_paid}
+                      </td>
+                      <td className="whitespace-nowrap py-3 pl-6 pr-3 text-sm">
+                        <div className="flex justify-end gap-3">
+                          <button className="rounded-md border p-2 hover:bg-gray-100">
+                            <span className="sr-only">Edit</span>
+                            Edit
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (confirm('Are you sure you want to delete this customer? This action cannot be undone.')) {
+                                // TODO: Add delete customer logic here
+                                console.log('Delete customer:', customer.id);
+                              }
+                            }}
+                            className="rounded-md border p-2 hover:bg-gray-100 text-red-600"
+                          >
+                            <span className="sr-only">Delete</span>
+                            Delete
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))}
