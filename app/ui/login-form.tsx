@@ -18,7 +18,7 @@ export default function LoginForm() {
   );
 
   return (
-    <form action={formAction} method="POST" className="space-y-6">
+    <form action={formAction} className="space-y-6">
       <div>
         <h1 className={`${lusitana.className} mb-6 text-3xl font-bold text-gray-900`}>
           Welcome Back
