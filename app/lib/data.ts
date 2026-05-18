@@ -30,6 +30,8 @@ export async function fetchRevenue() {
   }
 }
 
+export const revalidate = 0;
+
 export async function fetchLatestInvoices() {
   try {
     const data = await sql<LatestInvoiceRaw[]>`
